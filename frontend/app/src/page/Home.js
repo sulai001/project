@@ -19,21 +19,21 @@ function Home() {
   const [favoriteItems, setFavoriteItems] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/cart?userId=685d82e4ac8a33ee24385692")
+    fetch("https://mern-backend-jsxn.onrender.com/api/cart?userId=685d82e4ac8a33ee24385692")
       .then((res) => res.json())
       .then((data) => setCartItems(data.items || []));
   }, []);
 
   useEffect(() => {
     // Replace USER_ID with actual user id
-    fetch("http://localhost:5000/api/favorites?userId=685d82e4ac8a33ee24385692")
+    fetch("https://mern-backend-jsxn.onrender.com/api/favorites?userId=685d82e4ac8a33ee24385692")
       .then(res => res.json())
       .then(data => setFavoriteItems(data.products || []));
   }, []);
 
   // Add to cart handler
   const handleAddToCart = (product) => {
-    fetch("http://localhost:5000/api/cart", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -48,7 +48,7 @@ function Home() {
 
   // Remove from cart handler
   const handleRemoveFromCart = (productId) => {
-    fetch("http://localhost:5000/api/cart", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/cart", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -62,7 +62,7 @@ function Home() {
 
   // Add to favorites handler
   const handleAddToFavorites = (product) => {
-    fetch("http://localhost:5000/api/favorites", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/favorites", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -76,7 +76,7 @@ function Home() {
 
   // Remove from favorites handler
   const handleRemoveFromFavorites = (productId) => {
-    fetch("http://localhost:5000/api/favorites", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/favorites", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -92,7 +92,7 @@ const handleUpdateQuantity = async (productId, quantity, action) => {
   console.log("Updating quantity:", { productId, quantity, action });
 
   try {
-    const response = await fetch("http://localhost:5000/api/cart", {
+    const response = await fetch("https://mern-backend-jsxn.onrender.com/api/cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -114,7 +114,7 @@ const handleUpdateQuantity = async (productId, quantity, action) => {
   // Example function to add a category to the database
   const handleAddCategory = async (categoryName) => {
     try {
-      const response = await fetch("http://localhost:5000/api/categories", {
+      const response = await fetch("https://mern-backend-jsxn.onrender.com/api/categories", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: categoryName })

@@ -21,7 +21,7 @@ export default function OrderPage() {
       try {
         setLoading(true);
         setError("");
-        const res = await fetch("/api/user/orders", {
+        const res = await fetch("https://mern-backend-jsxn.onrender.com/api/user/orders", {
           credentials: "include",
           headers: { "Content-Type": "application/json" }
         });
@@ -77,10 +77,10 @@ export default function OrderPage() {
 
   // Fetch cart and favorites for sidebar counts
   useEffect(() => {
-    fetch("http://localhost:5000/api/cart?userId=685d82e4ac8a33ee24385692")
+    fetch("https://mern-backend-jsxn.onrender.com/api/cart?userId=685d82e4ac8a33ee24385692")
       .then((res) => res.json())
       .then((data) => setCartItems(data.items || []));
-    fetch("http://localhost:5000/api/favorites?userId=685d82e4ac8a33ee24385692")
+    fetch("https://mern-backend-jsxn.onrender.com/api/favorites?userId=685d82e4ac8a33ee24385692")
       .then(res => res.json())
       .then(data => setFavoriteItems(data.products || []));
   }, []);

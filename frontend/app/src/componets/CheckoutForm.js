@@ -27,7 +27,7 @@ export default function CheckoutForm({ onOrderPlaced, productId }) {
   useEffect(() => {
     async function fetchProduct() {
       if (!productId) return;
-      const res = await fetch(`/api/products/${productId}`);
+      const res = await fetch(`https://mern-backend-jsxn.onrender.com/api/products/${productId}`);
       if (res.ok) {
         const data = await res.json();
         setProduct(data);
@@ -100,7 +100,7 @@ export default function CheckoutForm({ onOrderPlaced, productId }) {
     };
 
     // Send order to backend
-    const response = await fetch("/api/orders", {
+    const response = await fetch("https://mern-backend-jsxn.onrender.com/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),

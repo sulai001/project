@@ -15,7 +15,7 @@ export default function CheckoutPage() {
   const handleOrderPlaced = async (orderId) => {
     setOrderPlaced(true);
     try {
-      const res = await fetch(`/api/orders/${orderId}`);
+      const res = await fetch(`https://mern-backend-jsxn.onrender.com/api/orders/${orderId}`);
       if (!res.ok) throw new Error("Failed to fetch order");
       const data = await res.json();
       setOrderDetails(data);

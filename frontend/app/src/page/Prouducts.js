@@ -35,7 +35,7 @@ const Products = () => {
 
   const fetchProduct = async () => {
     try {
-      const res = await fetch(`/api/products/${productId}`);
+      const res = await fetch(`https://mern-backend-jsxn.onrender.com/api/products/${productId}`);
       if (!res.ok) throw new Error(`Error: ${res.status}`);
       const data = await res.json();
       setProduct(data);
@@ -49,7 +49,7 @@ const Products = () => {
 
   const fetchCartItems = async () => {
     try {
-      const res = await fetch(`/api/cart?userId=${userId}`);
+      const res = await fetch(`https://mern-backend-jsxn.onrender.com/api/cart?userId=${userId}`);
       const data = await res.json();
       setCartItems(data.items || []);
     } catch (err) {
@@ -59,7 +59,7 @@ const Products = () => {
 
   const fetchFavoriteItems = async () => {
     try {
-      const res = await fetch(`/api/favorites?userId=${userId}`);
+      const res = await fetch(`https://mern-backend-jsxn.onrender.com/api/favorites?userId=${userId}`);
       const data = await res.json();
       const items = Array.isArray(data.products) ? data.products : [];
       setFavoriteItems(items);
@@ -98,7 +98,7 @@ const Products = () => {
 
   const addToCart = async ({ productId, quantity, action = 'set' }) => {
     try {
-      const res = await fetch('/api/cart', {
+      const res = await fetch('https://mern-backend-jsxn.onrender.com/api/cart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, productId, quantity, action }),
@@ -113,7 +113,7 @@ const Products = () => {
 
   const removeFromCart = async (productId) => {
     try {
-      const res = await fetch('/api/cart', {
+      const res = await fetch('https://mern-backend-jsxn.onrender.com/api/cart', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, productId }),
@@ -128,7 +128,7 @@ const Products = () => {
 
   const addToFavorites = async (productId) => {
     try {
-      const res = await fetch('/api/favorites', {
+      const res = await fetch('https://mern-backend-jsxn.onrender.com/api/favorites', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, productId }),
@@ -143,7 +143,7 @@ const Products = () => {
 
   const removeFromFavorites = async (productId) => {
     try {
-      const res = await fetch('/api/favorites', {
+      const res = await fetch('https://mern-backend-jsxn.onrender.com/api/favorites', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, productId }),
@@ -158,7 +158,7 @@ const Products = () => {
 
   const handleUpdateQuantity = async (productId, quantity, action) => {
     try {
-      const response = await fetch('/api/cart', {
+      const response = await fetch('https://mern-backend-jsxn.onrender.com/api/cart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, productId, quantity, action }),

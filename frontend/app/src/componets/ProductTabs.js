@@ -8,7 +8,7 @@ const ProductTabs = ({ product, productId }) => {
 
   useEffect(() => {
     const fetchReviews = async () => {
-      const res = await fetch(`/api/reviews/${productId}`);
+      const res = await fetch(`https://mern-backend-jsxn.onrender.com/api/reviews/${productId}`);
       const data = await res.json();
       setReviews(data.reviews || []);
     };

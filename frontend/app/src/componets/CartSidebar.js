@@ -15,7 +15,7 @@ const CartSidebar = ({
       const updatedCart = await Promise.all(
         initialCartItems.map(async (item) => {
           if (!item.product && item._id) {
-            const res = await fetch(`/api/products/${item._id}`);
+            const res = await fetch(`https://mern-backend-jsxn.onrender.com/api/products/${item._id}`);
             const product = await res.json();
             // If product is invalid, skip this item
             if (!product || !product._id) return null;

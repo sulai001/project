@@ -26,7 +26,7 @@ const YouMayAlsoLike = ({
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/products');
+        const res = await fetch('https://mern-backend-jsxn.onrender.com/api/products');
         const data = await res.json();
         if (Array.isArray(data)) {
           const top = data

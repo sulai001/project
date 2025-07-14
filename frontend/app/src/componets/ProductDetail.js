@@ -20,7 +20,7 @@ const ProductDetail = ({
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`/api/products/${productId}`);
+        const res = await fetch(`https://mern-backend-jsxn.onrender.com/api/products/${productId}`);
         const text = await res.text();
         const data = JSON.parse(text);
         setProduct(data);

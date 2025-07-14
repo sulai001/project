@@ -27,19 +27,19 @@ const ProductPage = () => {
   const category = searchParams.get('category') || '';
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/cart?userId=${userId}`)
+    fetch(`https://mern-backend-jsxn.onrender.com/api/cart?userId=${userId}`)
       .then(res => res.json())
       .then(data => setCartItems(data.items || []));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/favorites?userId=${userId}`)
+    fetch(`https://mern-backend-jsxn.onrender.com/api/favorites?userId=${userId}`)
       .then(res => res.json())
       .then(data => setFavoriteItems(data.products || []));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://mern-backend-jsxn.onrender.com/api/products")
       .then(res => res.json())
       .then(data => {
         let filtered = data;
@@ -61,7 +61,7 @@ const ProductPage = () => {
   }, [searchQuery, category]);
 
   const handleAddToCart = (product) => {
-    fetch("http://localhost:5000/api/cart", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, productId: product._id, quantity: 1 })
@@ -71,7 +71,7 @@ const ProductPage = () => {
   };
 
   const handleRemoveFromCart = (productId) => {
-    fetch("http://localhost:5000/api/cart", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/cart", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, productId })
@@ -81,7 +81,7 @@ const ProductPage = () => {
   };
 
   const handleUpdateQuantity = (productId, quantity, action) => {
-    fetch("http://localhost:5000/api/cart", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, productId, quantity, action })
@@ -91,7 +91,7 @@ const ProductPage = () => {
   };
 
   const handleAddToFavorites = (product) => {
-    fetch("http://localhost:5000/api/favorites", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/favorites", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, productId: product._id })
@@ -101,7 +101,7 @@ const ProductPage = () => {
   };
 
   const handleRemoveFromFavorites = (productId) => {
-    fetch("http://localhost:5000/api/favorites", {
+    fetch("https://mern-backend-jsxn.onrender.com/api/favorites", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, productId })

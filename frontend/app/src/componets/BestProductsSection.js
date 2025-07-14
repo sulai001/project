@@ -8,7 +8,7 @@ const BestProductsSection = ({ onAddToCart, onAddToFavorites, cartItems = [], fa
   const [favAnim, setFavAnim] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://mern-backend-jsxn.onrender.com/api/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.slice(0, 4)); // Only use first 4 products
